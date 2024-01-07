@@ -5,20 +5,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
-import java.util.List;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "as_category")
-public class Category extends BaseEntity {
+@Table(name = "as_contact")
+public class Contact extends BaseEntity {
+
+    @Column(name = "email")
+    protected String email;
 
     @Column(name = "title")
     protected String title;
 
     @Column(name = "description")
     protected String description;
-
-    /*@OneToMany
-    protected List<Auction> auctions;*/
 }
