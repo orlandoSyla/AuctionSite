@@ -12,14 +12,8 @@ import lombok.Setter;
 @Entity
 public class Bid extends BaseEntity {
 
-    @Column (name = "bidderName")
-    protected String bidderName;
-
-    @Column(name = "bidAmount")
-    protected double bidAmount;
-
-    @Column(name = "timestamp")
-    protected long timestamp;
+    @Column(name = "bid")
+    protected double bid;
 
     @Column(name = "auction_id")
     protected double auctionId;
