@@ -16,7 +16,7 @@ public class Bid extends BaseEntity {
     protected double bid;
 
     @Column(name = "auction_id")
-    protected double auctionId;
+    protected long auctionId;
 
     @Column(name = "user_id")
     protected long userId;
