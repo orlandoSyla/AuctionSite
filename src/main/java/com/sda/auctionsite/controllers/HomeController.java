@@ -10,10 +10,7 @@ import com.sda.auctionsite.services.HomeService;
 @RequestMapping("/")
 public class  HomeController {
 
-    private final HomeService homeService;
-
     public HomeController(HomeService homeService) {
-        this.homeService = homeService;
     }
 
 
