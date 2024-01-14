@@ -6,6 +6,11 @@
 <body>
 <div th:replace="fragments/page-header :: page-header"></div>
 
+<!-- BEGIN PRE-FOOTER -->
+<div th:replace="fragments/page-footer :: page-footer"></div>
+
+<!-- END FOOTER -->
+
 <!-- Load javascripts at bottom, this will reduce page load time -->
 <div th:replace="fragments/js :: js"></div>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
