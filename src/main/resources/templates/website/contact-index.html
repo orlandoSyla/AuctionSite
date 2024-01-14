@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<!-- Head BEGIN -->
+<head th:replace="fragments/head :: head"></head>
+<!-- Head END -->
+<body>
+<div th:replace="fragments/page-header :: page-header"></div>
+
+<!-- Load javascripts at bottom, this will reduce page load time -->
+<div th:replace="fragments/js :: js"></div>
+<!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+</html>

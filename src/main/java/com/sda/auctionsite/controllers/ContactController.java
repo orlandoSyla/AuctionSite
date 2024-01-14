@@ -3,19 +3,12 @@ package com.sda.auctionsite.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.sda.auctionsite.services.HomeService;
-
 
 @Controller
-@RequestMapping("/")
-public class  HomeController {
-
-    public HomeController(HomeService homeService) {
-    }
-
-
+@RequestMapping("/contact")
+public class ContactController {
     @GetMapping("")
     public String index() {
-        return "website/home-index";
+        return "website/contact-index";
     }
 }
