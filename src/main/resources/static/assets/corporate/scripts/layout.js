@@ -187,6 +187,16 @@ var Layout = function () {
             } 
         });
     }
+    document.addEventListener('DOMContentLoaded', function () {
+        var sidebarItems = document.querySelectorAll('.list-group-item.dropdown');
+
+        sidebarItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                this.classList.toggle('active');
+            });
+        });
+    });
+
 
     function handleDifInits() { 
         $(".header .navbar-toggle span:nth-child(2)").addClass("short-icon-bar");
