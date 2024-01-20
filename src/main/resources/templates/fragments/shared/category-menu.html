@@ -1,0 +1,7 @@
+<div th:fragment="category-menu">
+    <ul class="list-group margin-bottom-25 sidebar-menu">
+        <li class="list-group-item clearfix" th:each="category: ${categories}">
+            <a href="shop-product-list.html"><i class="fa fa-angle-right"></i><span th:text="${category.title}"></span></a>
+        </li>
+    </ul>
+</div>
