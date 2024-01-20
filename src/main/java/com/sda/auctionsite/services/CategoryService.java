@@ -68,6 +68,17 @@ public class CategoryService {
             categoryRepository.save(dbItem);
         }
 
+        List<Category> fifthCategoryResult = categoryRepository.findByTitle("accessories");
+        if (fifthCategoryResult.isEmpty()) {
+            // 2. If it does not exist, create it
+            Category dbItem = new Category();
+            dbItem.setCreatedAt(Instant.now());
+            dbItem.setTitle("Accessories");
+            dbItem.setDescription("This is the Accesories category of auctions");
+
+            categoryRepository.save(dbItem);
+
+        }
         return true;
     }
 }

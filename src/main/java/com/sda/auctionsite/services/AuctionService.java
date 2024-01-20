@@ -19,32 +19,46 @@ public class AuctionService {
         this.auctionRepository = auctionRepository;
         this.categoryRepository = categoryRepository;
     }
-    public List<Auction>getAuction(){
-        return auctionRepository.getAuctionByActive();
-    }
+
     public boolean createInitialData() {
-        // 1. Check if first exists in database
         List<Category> categories = categoryRepository.getAllNotDeleted();
-        List<Auction> auctionRepositoryByTitle = auctionRepository.findAuctionByTitle("iPhone 16");
-        if (auctionRepositoryByTitle.isEmpty()) {
-            // 2. If it does not exist, create it
-            Auction dbItem = new Auction();
-            dbItem.setTitle("iPhone16");
-            dbItem.setDescription("This is the item category of auctions");
-            dbItem.setPrice(500);
-            dbItem.setMinimumSellPrice(450);
 
-            Category smartPhones = categories.stream().filter(o -> "Smartphones".equalsIgnoreCase(o.getTitle())).findFirst().orElseGet(() -> null);
-            if (smartPhones == null)
-                throw new RuntimeException("Smartphones category not found!");
-            dbItem.setCategoryId(smartPhones.getId());
-            dbItem.setCreatedAt(Instant.now());
-            dbItem.setDuration(5);
-            dbItem.setStatus(AuctionStatus.INSERTED);
-
-            auctionRepository.save(dbItem);
+        if (categories.isEmpty()) {
+            throw new RuntimeException("Categories not found!");
         }
+
+        createAuction("iPhone16", "Smartphones", "This is the Smartphones category of auctions", 1500, 750, AuctionStatus.INSERTED, 5);
+        createAuction("Guitar", "Instruments", "This is the Instrument category of auctions", 700, 450, AuctionStatus.SOLD, 5);
+        createAuction("Tank", "Vehicles", "This is the Vehicles category of auctions", 50000, 9500, AuctionStatus.ONGOING, 5);
+        createAuction("Hoodie", "Clothes", "This is the Clothes category of auctions", 50, 12, AuctionStatus.UNSOLD, 1);
+        createAuction("Glasses", "Accessories", "This is the Accessories category of auctions", 200, 75, AuctionStatus.FINISHED, 1);
+        createAuction("Watches", "Accessories", "This is the accessories category of auctions", 500, 350, AuctionStatus.FINISHED, 1);
 
         return true;
     }
+
+    private void createAuction(String title, String categoryTitle, String description, double price, double minimumSellPrice,
+                               AuctionStatus status, int duration) {
+        Category category = findCategoryByTitle(categoryTitle);
+
+        Auction auction = new Auction();
+        auction.setTitle(title);
+        auction.setDescription(description);
+        auction.setPrice(price);
+        auction.setMinimumSellPrice(minimumSellPrice);
+        auction.setCategoryId(category.getId());
+        auction.setCreatedAt(Instant.now());
+        auction.setDuration(duration);
+        auction.setStatus(status);
+
+        auctionRepository.save(auction);
+    }
+
+    private Category findCategoryByTitle(String categoryTitle) {
+        return categoryRepository.getAllNotDeleted().stream()
+                .filter(c -> categoryTitle.equalsIgnoreCase(c.getTitle()))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException(categoryTitle + " category not found!"));
+    }
 }
+
