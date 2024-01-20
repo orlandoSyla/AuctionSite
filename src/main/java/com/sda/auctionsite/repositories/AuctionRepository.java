@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AuctionRepository extends JpaRepository<Auction, Long> {
     @Query(" from Auction a where lower(a.title) = lower(:title) ")
-    List<Auction> findAuctionBy(@Param("title") String title);
+    List<Auction> findAuctionByTitle(@Param("title") String title);
 
     @Query(" from Auction a where a.deleted = false")
     List<Auction> getAuctionByActive();
