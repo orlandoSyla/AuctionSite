@@ -1,7 +1,6 @@
 package com.sda.auctionsite.repositories;
 
 import com.sda.auctionsite.entities.Auction;
-import com.sda.auctionsite.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
