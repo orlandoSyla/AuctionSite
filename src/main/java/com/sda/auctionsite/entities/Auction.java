@@ -43,17 +43,13 @@ public class Auction extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     protected AuctionStatus status;
 
-    @Column(name = "category_id")
-    protected long categoryId;
-
-    @Column(name = "user_id")
-    protected long userId;
-
     @ManyToOne
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
     protected Category category;
 
+
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     protected User user;
+
 }

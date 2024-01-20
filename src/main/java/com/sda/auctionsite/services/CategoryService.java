@@ -57,13 +57,13 @@ public class CategoryService {
             categoryRepository.save(dbItem);
         }
 
-        List<Category> fourthCategoryResult = categoryRepository.findByTitle("Vehicle");
+        List<Category> fourthCategoryResult = categoryRepository.findByTitle("Vehicles");
         if (fourthCategoryResult.isEmpty()) {
             // 2. If it does not exist, create it
             Category dbItem = new Category();
             dbItem.setCreatedAt(Instant.now());
-            dbItem.setTitle("Vehicle");
-            dbItem.setDescription("This is the Vehicle category of auctions");
+            dbItem.setTitle("Vehicles");
+            dbItem.setDescription("This is the Vehicles category of auctions");
 
             categoryRepository.save(dbItem);
         }

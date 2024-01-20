@@ -27,7 +27,7 @@ public class AuctionService {
             throw new RuntimeException("Categories not found!");
         }
 
-        createAuction("iPhone16", "Smartphones", "This is the Smartphones category of auctions", 1500, 750, AuctionStatus.INSERTED, 5);
+        createAuction("iPhone16", "Smartphones", "This is the Smartphone category of auctions", 1500, 750, AuctionStatus.INSERTED, 5);
         createAuction("Guitar", "Instruments", "This is the Instrument category of auctions", 700, 450, AuctionStatus.SOLD, 5);
         createAuction("Tank", "Vehicles", "This is the Vehicles category of auctions", 50000, 9500, AuctionStatus.ONGOING, 5);
         createAuction("Hoodie", "Clothes", "This is the Clothes category of auctions", 50, 12, AuctionStatus.UNSOLD, 1);
@@ -42,14 +42,16 @@ public class AuctionService {
         Category category = findCategoryByTitle(categoryTitle);
 
         Auction auction = new Auction();
+        auction.setId(category.getId());
         auction.setTitle(title);
         auction.setDescription(description);
         auction.setPrice(price);
         auction.setMinimumSellPrice(minimumSellPrice);
-        auction.setCategoryId(category.getId());
         auction.setCreatedAt(Instant.now());
         auction.setDuration(duration);
         auction.setStatus(status);
+
+
 
         auctionRepository.save(auction);
     }

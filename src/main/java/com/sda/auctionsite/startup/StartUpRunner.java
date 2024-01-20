@@ -18,5 +18,6 @@ public class StartUpRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         categoryService.createInitialData();
+        auctionService.createInitialData();
     }
 }
