@@ -1,6 +1,7 @@
 package com.sda.auctionsite.controllers;
 
 import com.sda.auctionsite.services.CategoryService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +14,13 @@ import com.sda.auctionsite.services.HomeService;
 public class  HomeController {
     protected final CategoryService categoryService;
 
+
     public HomeController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @GetMapping("")
-    public String index(ModelMap modelMap) {
+    public String index(@NotNull ModelMap modelMap) {
         modelMap.put("categories", categoryService.getCategories());
         return "website/home-index";
     }

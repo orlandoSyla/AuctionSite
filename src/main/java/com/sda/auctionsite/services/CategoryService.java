@@ -11,11 +11,9 @@ import java.util.List;
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
-    private final AuctionRepository auctionRepository;
 
     public CategoryService(CategoryRepository categoryRepository, AuctionRepository auctionRepository) {
         this.categoryRepository = categoryRepository;
-        this.auctionRepository = auctionRepository;
     }
 
     public List<Category> getCategories() {
@@ -27,7 +25,7 @@ public class CategoryService {
         // 1. Check if first category exists in database
         List<Category> firstCategoryResult = categoryRepository.findByTitle("Smartphones");
         if (firstCategoryResult.isEmpty()) {
-            // 2. If does not exists, create it
+            // 2. If it does not exist, create it
             Category dbItem = new Category();
             dbItem.setTitle("Smartphones");
             dbItem.setCreatedAt(Instant.now());
@@ -38,7 +36,7 @@ public class CategoryService {
 
         List<Category> secondCategoryResult = categoryRepository.findByTitle("Instruments");
         if (secondCategoryResult.isEmpty()) {
-            // 2. If does not exists, create it
+            // 2. If it does not exist, create it
             Category dbItem = new Category();
             dbItem.setTitle("Instruments");
             dbItem.setCreatedAt(Instant.now());
@@ -50,7 +48,7 @@ public class CategoryService {
 
         List<Category> thirdCategoryResult = categoryRepository.findByTitle("Clothes");
         if (thirdCategoryResult.isEmpty()) {
-            // 2. If does not exists, create it
+            // 2. If it does not exist, create it
             Category dbItem = new Category();
             dbItem.setCreatedAt(Instant.now());
             dbItem.setTitle("Clothes");
@@ -61,7 +59,7 @@ public class CategoryService {
 
         List<Category> fourthCategoryResult = categoryRepository.findByTitle("Vehicle");
         if (fourthCategoryResult.isEmpty()) {
-            // 2. If does not exists, create it
+            // 2. If it does not exist, create it
             Category dbItem = new Category();
             dbItem.setCreatedAt(Instant.now());
             dbItem.setTitle("Vehicle");
