@@ -24,9 +24,9 @@ public class AuctionService {
         if (auctionRepositoryByTitle.isEmpty()) {
             // 2. If it does not exist, create it
             Category dbItem = new Category();
-            dbItem.setTitle("Smartphones");
+            dbItem.setTitle("Item");
             dbItem.setCreatedAt(Instant.now());
-            dbItem.setDescription("This is the smartphones category of auctions");
+            dbItem.setDescription("This is the item category of auctions");
 
             auctionRepository.save(dbItem);
         }
