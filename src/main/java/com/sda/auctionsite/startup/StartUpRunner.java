@@ -10,6 +10,7 @@ public class StartUpRunner implements CommandLineRunner {
     private final CategoryService categoryService;
     private final AuctionService auctionService;
 
+
     public StartUpRunner(CategoryService categoryService, AuctionService auctionService) {
         this.categoryService = categoryService;
         this.auctionService = auctionService;
